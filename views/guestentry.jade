@@ -1,0 +1,13 @@
+html
+  head
+  link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css', integrity='sha384-AysaV+vQoT3kOAXZkl02PThvDr8HYKPZhNT5h/CXfBThSRXQ6jW5DO2ekP5ViFdi', crossorigin='anonymous')
+
+  body
+    .row
+      .col-xs-4.col-xs-offset-2  
+        .card
+          h3.card-header Username: #{entry.username}
+          .card-block
+            h5.card-title Post: #{entry.post}
+            p.card-text Email: #{entry.email}
+            p #{entry.date}
