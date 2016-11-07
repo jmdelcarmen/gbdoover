@@ -1,0 +1,26 @@
+{
+  "name": "gbdoover",
+  "version": "1.0.0",
+  "description": "Remaking the guestbook",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jmdelcarmen/gbdoover.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jmdelcarmen/gbdoover/issues"
+  },
+  "homepage": "https://github.com/jmdelcarmen/gbdoover#readme",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "jade": "^1.11.0",
+    "mongoose": "^4.6.6",
+    "nodemon": "^1.11.0"
+  }
+}
