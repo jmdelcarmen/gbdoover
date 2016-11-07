@@ -1,0 +1,30 @@
+html
+  head
+  link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css', integrity='sha384-AysaV+vQoT3kOAXZkl02PThvDr8HYKPZhNT5h/CXfBThSRXQ6jW5DO2ekP5ViFdi', crossorigin='anonymous')
+
+  body
+    h1 hi
+    
+    form(method="post" action="/guestbook").col-xs-4.col-xs-offset-2  
+      input(class="form-control" type="text" name="username" placeholder="Username . . .")
+      input(class="form-control" type="text" name="email" placeholder="Email . . .")
+      textarea(class="form-control" placeholder="Guest entry . . . " name="post")
+      button(type="submit" class="btn btn-primary") Submit
+      
+    table.table.table-inverse
+      thead
+        tr
+          th Guest
+          th Email
+          th Date
+          th Post
+      tbody
+        each entry, i in entries  
+          tr
+            td 
+              a(href="guestbook/guest/#{entry.username}") #{entry.username}
+            td #{entry.email}
+            td #{entry.date}
+            td #{entry.post}
+            td 
+              a(href="guestbook/#{entry._id}") Delete
