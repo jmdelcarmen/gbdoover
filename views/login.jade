@@ -1,0 +1,12 @@
+extends layout
+
+block content
+  h1 Login
+  form.form-inline(method="post" aciton="/users/login")
+    .form-group
+      label.sr-only(for='username') 
+      input#username.form-control(type='text', placeholder='Enter email' name="username")
+    .form-group
+      label.sr-only(for='password') 
+      input#password.form-control(type='password', placeholder='Password' name="password")
+      button.btn.btn-primary(type='submit') Login

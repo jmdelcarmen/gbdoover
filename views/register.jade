@@ -1,0 +1,12 @@
+extends layout
+
+block content
+  h1 Register
+  form.form-inline(method="post" action="/users/register")
+    .form-group
+      label.sr-only(for='username') Email address
+      input#username.form-control(type='text', placeholder='Enter email' name="username")
+    .form-group
+      label.sr-only(for='password') Password
+      input#password.form-control(type='password', placeholder='Password' name="password")
+      button.btn.btn-primary(type='submit') Sign up

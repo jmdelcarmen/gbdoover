@@ -17,10 +17,16 @@
   },
   "homepage": "https://github.com/jmdelcarmen/gbdoover#readme",
   "dependencies": {
+    "bcrypt": "^0.8.7",
+    "bcryptjs": "^2.3.0",
     "body-parser": "^1.15.2",
+    "connect-flash": "^0.1.1",
     "express": "^4.14.0",
+    "express-session": "^1.14.2",
     "jade": "^1.11.0",
     "mongoose": "^4.6.6",
-    "nodemon": "^1.11.0"
+    "nodemon": "^1.11.0",
+    "passport": "^0.3.2",
+    "passport-local": "^1.0.0"
   }
 }

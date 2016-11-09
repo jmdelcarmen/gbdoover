@@ -1,13 +1,16 @@
 const express = require('express');
 const router = express.Router();
 const Post = require('../models/guestpost');
+const User = require('../models/users');
+
 
 
 //display all user entries
 router.route("/")
-  .get((req, res) => {
+  .get(ensureAuthenticated, (req, res, next) => {
     Post.find({}, {}, (e, data) => {
       if(e) throw e;
+
       //send db entries to browser
       res.render('guestbook', {
         title: "GBdoover",
@@ -15,6 +18,7 @@ router.route("/")
       });
     });
   })
+
   //save user
   .post((req, res) => {
     let guestEntry = new Post(req.body);
@@ -27,20 +31,25 @@ router.get('/:id', (req, res) => {
   let userId = req.params.id;
   Post.findByIdAndRemove(userId, (e, data) => {
     if(e) throw e;
-    console.log(data);
     res.redirect('/guestbook');
   });
 });
 
 //user single entry
 router.get('/guest/:username', (req, res) => {
-  let lol = req.params.username;
-  Post.findOne({username: lol}, (err, data) => {
-    if(err) throw err;
-
+  let username = req.params.username;
+  Post.findOne({username: username}, (e, data) => {
+    if(e) throw e;
     res.render('guestentry', {entry: data});
   });
 });
 
+function ensureAuthenticated (req, res, next) {
+  if (req.isAuthenticated()) {
+    return next();
+  } else {
+    res.redirect('/users/login');
+  }
+};
 
 module.exports = router;
