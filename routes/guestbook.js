@@ -3,7 +3,10 @@ const router = express.Router();
 const Post = require('../models/guestpost');
 const User = require('../models/users');
 
-
+router.get('/logout', (req, res, next) => {
+  req.logout();
+  res.redirect('/users/login');
+});
 
 //display all user entries
 router.route("/")
@@ -14,14 +17,19 @@ router.route("/")
       //send db entries to browser
       res.render('guestbook', {
         title: "GBdoover",
-        entries: data
+        entries: data,
+        user: req.user
       });
     });
   })
 
   //save user
   .post((req, res) => {
-    let guestEntry = new Post(req.body);
+    let guestEntry = new Post({
+      username: req.user.username,
+      post: req.body.post,
+      email: req.user.email
+    });
     guestEntry.save();
     res.redirect('/guestbook');
   });
@@ -44,6 +52,7 @@ router.get('/guest/:username', (req, res) => {
   });
 });
 
+
 function ensureAuthenticated (req, res, next) {
   if (req.isAuthenticated()) {
     return next();
@@ -51,5 +60,6 @@ function ensureAuthenticated (req, res, next) {
     res.redirect('/users/login');
   }
 };
+
 
 module.exports = router;

@@ -3,16 +3,14 @@ const Schema = mongoose.Schema;
 
 const Guestpost = new Schema({
   username: {
-    type: String,
-    required: true
+    type: String
   },
   post: {
     type: String,
     required: true
   },
   email: {
-    type: String,
-    required: true
+    type: String
   },
   date: {type: Date, default: Date.now}
 });

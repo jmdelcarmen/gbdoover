@@ -47,7 +47,8 @@ router.route('/register')
   .post((req, res) => {
     var newUser = new User({
       username: req.body.username,
-      password: bcrypt.hashSync(req.body.password, 10)
+      password: bcrypt.hashSync(req.body.password, 10),
+      email: req.body.email
     });
     User.findOne({username: req.body.username}, (e, user) => {
       if(e) throw e;

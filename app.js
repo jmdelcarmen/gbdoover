@@ -40,6 +40,7 @@ app.use('/', indexRoute);
 app.use('/guestbook', guestbook);
 app.use('/users', users);
 
+
 app.get('*', (req, res, next) => {
   module.locals.user = req.user || null;
 });
